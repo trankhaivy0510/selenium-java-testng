@@ -19,7 +19,7 @@ public class Topic_2 {
     }
 
     @Test
-    public void Register(){
+    public void register(){
         driver = new ChromeDriver();
         driver.get("https://www.nopcommerce.com/vi/register?returnUrl=%2Fvi%2Fget-started");
         WebElement lastNameField = driver.findElement(By.id("LastName"));
@@ -29,12 +29,12 @@ public class Topic_2 {
 
 
     @Test
-    public void Login(){
+    public void login(){
 
     }
 
     @Test
-    public void TCS03_Relative_Locator (){
+    public void tcs003_Relative_Locator (){
         WebElement rememberMeCheckbox = driver.findElement(By.cssSelector("input#RememberMe"));
         WebElement forgotPasswordLinkBy = driver.findElement(By.cssSelector("a[href='/passwordrecovery']"));
         WebElement loginButton = driver.findElement(By.cssSelector("button.login-button"));
