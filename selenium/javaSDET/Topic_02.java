@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.annotations.*;
 
-public class Topic_2 {
+public class Topic_02 {
     WebDriver driver;
 
     @BeforeTest
@@ -51,7 +51,7 @@ public class Topic_2 {
 
     }
 
-    @AfterClass
+    @AfterTest
     public void closeBrowser(){
         driver.quit();
     }
