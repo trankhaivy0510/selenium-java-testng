@@ -1,4 +1,4 @@
-package javaSDET;
+package webdriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,8 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import java.sql.Driver;
 
 public class Topic_03_XPath_CSS {
     WebDriver driver;

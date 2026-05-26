@@ -1,14 +1,10 @@
-package javaSDET;
+package webdriver;
 
-import dev.failsafe.Timeout;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.sql.Time;
 import java.time.Duration;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;

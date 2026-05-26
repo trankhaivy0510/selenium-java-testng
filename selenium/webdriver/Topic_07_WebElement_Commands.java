@@ -1,10 +1,8 @@
-package javaSDET;
+package webdriver;
 
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.security.Key;
 
 public class Topic_07_WebElement_Commands {
     WebDriver webDriver;
