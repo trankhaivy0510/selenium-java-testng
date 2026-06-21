@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.annotations.*;
 
-public class Topic_02 {
+public class Topic_02_String {
     WebDriver driver;
 
     @BeforeTest
@@ -49,6 +49,14 @@ public class Topic_02 {
 
 //        System.out.println(rememberMeLabel.toString());
 
+    }
+
+    public static void main(String[] args) {
+        String link = "https://the-internet.herokuapp.com/";
+
+        String[] linkArray = link.split("//");
+        link = linkArray[0] + "//" + linkArray[1];
+        System.out.println(link);
     }
 
     @AfterTest
