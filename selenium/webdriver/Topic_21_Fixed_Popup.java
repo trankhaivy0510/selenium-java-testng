@@ -21,9 +21,11 @@ public class Topic_21_Fixed_Popup {
     @BeforeClass
     public void initBrowser(){
         driver = new ChromeDriver();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();
+    }
+
+    private void setImplicitTimeout(long timeInSecond) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
     @Test
@@ -76,8 +78,10 @@ public class Topic_21_Fixed_Popup {
     @Test
     public  void TC04_Fixed_Popup_TIKI_NOTINDOM() throws InterruptedException {
         driver.get("https://tiki.vn/");
+        setImplicitTimeout(5);
         List<WebElement> popupContainer = driver.findElements(By.cssSelector("div#VIP_BUNDLE"));
 
+        setImplicitTimeout(30);
         if(popupContainer.size()>0 && popupContainer.get(0).isDisplayed()){
             driver.findElement(By.cssSelector("img[alt='close-icon']")).click();
             System.out.println("Pop up is displayed");
@@ -85,5 +89,40 @@ public class Topic_21_Fixed_Popup {
             System.out.println("Pop up is not displayed");
         }
         driver.findElement(By.cssSelector("div[data-view-id='header_header_account_container']")).click();
+        Assert.assertTrue(driver.findElement(By.cssSelector("div.ReactModal__Content")).isDisplayed());
+
+        driver.findElement(By.cssSelector("p.login-with-email")).click();
+        driver.findElement(By.xpath("//button[text()='Đăng nhập']")).click();
+
+        Assert.assertTrue(driver.findElement(By.xpath("//span[text()='Email không được để trống']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//span[text()='Mật khẩu không được để trống']")).isDisplayed());
+        driver.findElement(By.cssSelector("img.close-img")).click();
+
+        Assert.assertEquals(driver.findElements(By.cssSelector("div.ReactModal__Content")).size(),0);
+
+    }
+
+    @Test
+    public  void TC05_NgoaiNgu24h_NOTINDOM() throws InterruptedException {
+        driver.get("https://ngoaingu24h.vn/");
+        Thread.sleep(2000);
+
+        driver.findElement(By.xpath("//button[text()='Đăng nhập']")).click();
+        Thread.sleep(2000);
+
+        List<WebElement> loginPopUp = driver.findElements(By.cssSelector("div.MuiDialog-container>div"));
+        Assert.assertTrue(loginPopUp.size()>0 && loginPopUp.get(0).isDisplayed());
+
+        driver.findElement(By.cssSelector("input[autocomplete='username']")).sendKeys("automation");
+        driver.findElement(By.cssSelector("input[autocomplete='new-password']")).sendKeys("111111");
+        driver.findElement(By.xpath("//form//button[text()='Đăng nhập']")).click();
+        Thread.sleep(5000);
+        Assert.assertEquals(driver.findElement(By.cssSelector("div#notistack-snackbar")).getText(),"Bạn đã nhập sai tài khoản hoặc mật khẩu!");
+        Thread.sleep(6000);
+
+        driver.findElement(By.cssSelector("svg[data-testid='CloseIcon']")).click();
+        Thread.sleep(3000);
+        loginPopUp = driver.findElements(By.cssSelector("div.MuiDialog-container>div"));
+        Assert.assertTrue(loginPopUp.size()==0 && loginPopUp.isEmpty());
     }
 }
